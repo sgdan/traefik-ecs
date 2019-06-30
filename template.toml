@@ -1,0 +1,14 @@
+logLevel = "$LOG_LEVEL"
+
+[web]
+address = ":8080"
+readOnly = true
+
+[ecs]
+clusters = ["$CLUSTER"]
+watch = true
+domain = "$DOMAIN"
+autoDiscoverClusters = false
+refreshSeconds = 15
+exposedByDefault = false
+region = "$REGION"
