@@ -1,8 +1,19 @@
 logLevel = "$LOG_LEVEL"
 
-[web]
-address = ":8080"
-readOnly = true
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+  [entryPoints.api]
+  address = ":8080"
+
+[api]
+entryPoint = "api"
+dashboard = true
 
 [ecs]
 clusters = ["$CLUSTER"]
@@ -12,3 +23,12 @@ autoDiscoverClusters = false
 refreshSeconds = 15
 exposedByDefault = false
 region = "$REGION"
+
+[acme]
+email = "$EMAIL"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+  [acme.dnsChallenge]
+  provider = "route53"
+  delayBeforeCheck = 0
