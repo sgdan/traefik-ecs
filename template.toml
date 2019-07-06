@@ -1,34 +1,45 @@
 logLevel = "$LOG_LEVEL"
 
+defaultEntryPoints = ["https", "http"]
+
 [entryPoints]
   [entryPoints.http]
-  address = ":80"
+    address = ":80"
     [entryPoints.http.redirect]
-    entryPoint = "https"
+      entryPoint = "https"
+  
   [entryPoints.https]
-  address = ":443"
-  [entryPoints.https.tls]
+    address = ":443"
+    [entryPoints.https.tls]
+  
   [entryPoints.api]
-  address = ":8080"
+    address = ":8080"
 
 [api]
-entryPoint = "api"
-dashboard = true
+  entryPoint = "api"
+  dashboard = true
 
 [ecs]
-clusters = ["$CLUSTER"]
-watch = true
-domain = "$DOMAIN"
-autoDiscoverClusters = false
-refreshSeconds = 15
-exposedByDefault = false
-region = "$REGION"
+  clusters = ["$CLUSTER"]
+  watch = true
+  domain = "$DOMAIN"
+  autoDiscoverClusters = false
+  refreshSeconds = 15
+  exposedByDefault = false
+  region = "$AWS_REGION"
+  # accessKeyID = "$AWS_ACCESS_KEY_ID"
+  # secretAccessKey = "$AWS_SECRET_ACCESS_KEY"
 
 [acme]
-email = "$EMAIL"
-storage = "acme.json"
-entryPoint = "https"
-onHostRule = true
-  [acme.dnsChallenge]
+  email = "$EMAIL"
+  storage = "/acme/acme.json"
+  entryPoint = "https"
+  onHostRule = true
+  # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+
+[acme.dnsChallenge]
   provider = "route53"
   delayBeforeCheck = 0
+
+[[acme.domains]]
+  main = "$DOMAIN"
