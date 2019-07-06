@@ -27,15 +27,13 @@ defaultEntryPoints = ["https", "http"]
   refreshSeconds = 15
   exposedByDefault = false
   region = "$AWS_REGION"
-  # accessKeyID = "$AWS_ACCESS_KEY_ID"
-  # secretAccessKey = "$AWS_SECRET_ACCESS_KEY"
 
 [acme]
   email = "$EMAIL"
   storage = "/acme/acme.json"
   entryPoint = "https"
   onHostRule = true
-  # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+  caServer = "$CA_SERVER"
 
 [acme.dnsChallenge]
   provider = "route53"

@@ -14,4 +14,7 @@ ENV DOMAIN example.com
 ENV AWS_REGION us-east-1
 ENV EMAIL me@my.domain.com
 
+# For prod use https://acme-v02.api.letsencrypt.org/directory
+ENV CA_SERVER https://acme-staging-v02.api.letsencrypt.org/directory
+
 ENTRYPOINT ["/init.sh"]
