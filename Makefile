@@ -1,4 +1,4 @@
-.build: Dockerfile template.toml init.sh
+.build: Dockerfile http.toml https.toml init.sh
 	docker-compose build
 	touch .build
 

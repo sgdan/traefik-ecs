@@ -22,7 +22,6 @@ defaultEntryPoints = ["https", "http"]
 [ecs]
   clusters = ["$CLUSTER"]
   watch = true
-  domain = "$DOMAIN"
   autoDiscoverClusters = false
   refreshSeconds = 15
   exposedByDefault = false

@@ -1,0 +1,21 @@
+logLevel = "$LOG_LEVEL"
+
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"  
+  [entryPoints.api]
+    address = ":8080"
+
+[api]
+  entryPoint = "api"
+  dashboard = true
+
+[ecs]
+  clusters = ["$CLUSTER"]
+  watch = true
+  autoDiscoverClusters = false
+  refreshSeconds = 15
+  exposedByDefault = false
+  region = "$AWS_REGION"
