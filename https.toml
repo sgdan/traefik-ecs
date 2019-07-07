@@ -40,3 +40,6 @@ defaultEntryPoints = ["https", "http"]
 
 [[acme.domains]]
   main = "$DOMAIN"
+
+[ping]
+  entryPoint = "http"

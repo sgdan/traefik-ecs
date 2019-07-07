@@ -19,3 +19,6 @@ defaultEntryPoints = ["http"]
   refreshSeconds = 15
   exposedByDefault = false
   region = "$AWS_REGION"
+
+[ping]
+  entryPoint = "http"
